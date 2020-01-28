@@ -1,0 +1,54 @@
+{
+"bleName":"bioland",
+"serviceID":"1000",
+"setCID":"1001",
+"getCID":"1002",
+"codeType":"hex",
+"response":"without",
+"packetEnd":"",
+"checkSum":"+2",
+"cmd":{
+"sendGetInfo":     "5a0a 00 yyMMddHHmmss 00",
+"sendStartMeasure":"5A0A 01 yyMMddHHmmss 00",
+"sendStopMeasure": "5A0A 02 yyMMddHHmmss 00",
+"sendGetLogs":     "5A0A 03 yyMMddHHmmss 00",
+"sendLogGotOk":    "5A0A 05 yyMMddHHmmss 00",
+
+"gotInfo":         "5512 00 2006 6401 00 010203040506070809 00",
+"gotMeasuringData":"5508 02 02 60 P1P2 ZZ",
+"gotMeasureResult":"550E 03 191125173010 P1P2 pp hh ZZ",
+"gotLog":          "550E 03 191125173010 0120 90 60 00",
+"gotError":        "5505 EE FF 00",
+"gotLogOver":      "5505 05 ff 00"
+},
+"sendCmd":["sendGetInfo","sendStartMeasure","sendStopMeasure","sendGetLogs","sendLogGotOk"],
+"GotCmd":{
+"551200":"line2",
+"550802":"line4",
+"550e03":"line5",
+"5505ee":"line6",
+"550505":"print历史数据传完了"
+},
+"logic":{
+"line1":{"type":"send",
+         "content":"sendGetInfo",
+         "location":["7~8","9~10","11~12","13~14","15~16","17~18"],
+         "title":["年","月","日","时","分","秒"]},
+"line2":{"type":"readData",
+         "content":"gotInfo",
+         "location":["7~8","9~10","11~12","13~14","15~16","17~34"],
+         "title":["版本码","客户码","电量值int","机器类别","型号码","序列号ascii"]},
+"line4":{"type":"readData",
+         "content":"gotMeasuringData",
+         "location":["7~8","9~10","11~12","13~14"],
+         "title":["是否有心率","电量值","压力值低位","压力值高位"]},
+"line5":{"type":"readData",
+         "content":"gotMeasureResult",
+         "location":["7~18","19~22","23~24","25~26"],
+         "title":["日期和时间","高压little","低压int","心率int"]},
+"line6":{"type":"readData",
+         "content":"gotError",
+         "location":["7~8"],
+         "title":["错误码"]}
+}
+}

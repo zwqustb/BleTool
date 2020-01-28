@@ -1,0 +1,58 @@
+{
+"bleName":"bp_boe",
+"serviceID":"1801",
+"setCID":   "2801",
+"getCID":   "2802",
+"codeType":"hex",
+"response":"without",
+"packetEnd":"",
+"cmd":{
+"sendTime":         "0103 01 06 19 12 06 23 59 00 00",
+"gotTimeSetResult": "0103 02 00 00",
+"sendGetPowerInfo": "0103 03 00 00",
+"gotPowerOk":       "0103 04 02 99 00 00",
+"gotPowerLow":      "0103 04 02 09 01 00",
+"sendGetLogs":      "0103 05 00 00",
+"gotLog":           "0103 06 10 19 12 06 23 59 25 23 01 70 60 00",
+"sendAppGetLog":    "0103 07 00 00",
+"gotLogNull":       "0103 08 00 00",
+"sendStartMeasure": "0103 09 00 00",
+"gotStartResult":   "0103 10 01 00 00",
+"sendStopMeasure":  "0103 11 00 00",
+"gotStopResult":    "0103 12 01 00 00",
+"gotMeasureResult": "0103 14 10 19 12 06 23 59 25 23 01 70 60 00",
+"gotMeasuringData": "0103 16 02 01 02 00",
+"gotError":         "0103 18 01 01 00"
+},
+"sendCmd":["sendTime","sendGetPowerInfo","sendGetLogs","sendAppGetLog","sendStartMeasure","sendStopMeasure"],
+"gotCmd":{
+"0103 02 00 00":"print时间设置成功",
+"0103 02 01 00":"print时间设置失败",
+"0103 04 02"   :"print收到电量信息",
+"0103 06 10"   :"print收到日志信息",
+"0103 08 00 00":"print收到日志已为空",
+"0103 10 01"   :"print收到开始测量结果",
+"0103 12 01"   :"print收到结束测量结果",
+"0103 14 10"   :"print收到测量结果",
+"0103 16 02"   :"print收到测量中数据",
+"0103 18 01"   :"print收到错误码"
+},
+"logic":{
+"line1":{"set":"sendGetDeviceInfo","ok":"gotDeviceInfo","no":"","okNext":"","noThen":"","repeat":5,"timeout":2}
+"line2":{"type":"readData",
+          "location":["9~10","11~12"],
+          "title":["电量","电量是否低"]
+},
+"line3":{"type":"send",
+        "content":"sendTime",
+        "location":["9~10","11~12","13~14","15~16","17~18"],
+        "title":["年","月","日","时","分"],
+        "ok":"gotDeviceInfo",
+        "no":"gotNo",
+        "okNext":"",
+        "noThen":"",
+        "repeat":5,
+        "timeout":2
+}
+}
+}

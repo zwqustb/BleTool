@@ -1,0 +1,48 @@
+{
+"bleName":"rbp",
+"serviceID":"fff0",
+"setCID":"fff2",
+"getCID":"fff1",
+"codeType":"hex",
+"response":"without",
+"packetEnd":"",
+"cmd":{
+"sendGetPower":    "CC80 02 03 0404 00 01",
+"sendStartMeasure":"CC80 02 03 01 02 00 02",
+"sendStopMeasure": "CC80 02 03 01 03 00 03",
+"sendHand":        "CC80 02 03 010100 01",
+
+"gotHand":         "AA80 02 03 010100 01 ",
+"gotPowerInfo":    "AA80 02 04 0404 0e51 59",
+"gotMeasureResult":"aa80 02 0f 0106 000e0101010101009300600045 b3",
+"gotMeasuringData":"AA80 02 0105 00000000 5c 00 52",
+"gotError":        "AA80 LL 07 WW ZZ"
+
+},
+"sendCmd":["sendHand","sendGetPower","sendStartMeasure","sendStopMeasure"],
+"GotCmd":{
+"aa800203":"print握手成功",
+"aa800204":"line4",
+"aa80020f":"line6",
+"aa800407":"line7",
+"aa8002080105":"line8"
+},
+"logic":{
+"line4":{"type":"readData",
+         "content":"gotPowerInfo",
+         "location":["13~14","15~16"],
+         "title":["电压高位值*256int","电压低位int"]},
+"line6":{"type":"readData",
+         "content":"gotMeasureResult",
+         "location":["13","14","15~26","27~30","31~34","35~38"],
+         "title":["是否有房颤","是否心率不齐","日期","高压big","低压big","心率big"]},
+"line7":{"type":"readData",
+         "content":"gotError",
+         "location":["9~10"],
+         "title":["错误码"]},
+"line8":{"type":"readData",
+         "content":"gotMeasuringData",
+         "location":["19~20"],
+         "title":["测量中的压力值"]},
+}
+}

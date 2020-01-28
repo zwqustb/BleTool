@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CmdTestVC" customModule="BleTool1" customModuleProvider="target">
+            <connections>
+                <outlet property="m_pPickerView" destination="Buh-es-xDZ" id="1XZ-dN-Fvn"/>
+                <outlet property="m_pTxt" destination="2O4-UV-72r" id="way-Wc-3uS"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2O4-UV-72r">
+                    <rect key="frame" x="0.0" y="44" width="414" height="490"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpa-Ci-JcE">
+                    <rect key="frame" x="0.0" y="542" width="414" height="320"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4G-5o-r8t">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="h4z-Cp-tAU"/>
+                            </constraints>
+                            <state key="normal" title="展开"/>
+                            <state key="selected" title="收起"/>
+                            <connections>
+                                <action selector="clickChangeUI:" destination="-1" eventType="touchUpInside" id="WGj-Pw-Z0Y"/>
+                            </connections>
+                        </button>
+                        <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Buh-es-xDZ">
+                            <rect key="frame" x="0.0" y="60" width="414" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="eSl-1Z-cpc"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="dHZ-lQ-Lng"/>
+                                <outlet property="delegate" destination="-1" id="b1Y-xo-Mrg"/>
+                            </connections>
+                        </pickerView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgK-Jd-xDm">
+                            <rect key="frame" x="0.0" y="260" width="414" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="xrM-ac-ohk"/>
+                            </constraints>
+                            <state key="normal" title="发送指令"/>
+                            <connections>
+                                <action selector="clickSendCmd:" destination="-1" eventType="touchUpInside" id="kt3-dv-dtd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="Buh-es-xDZ" firstAttribute="top" secondItem="M4G-5o-r8t" secondAttribute="bottom" id="0Ek-5h-I1u"/>
+                        <constraint firstItem="UgK-Jd-xDm" firstAttribute="leading" secondItem="Mpa-Ci-JcE" secondAttribute="leading" id="408-Sv-44m"/>
+                        <constraint firstItem="M4G-5o-r8t" firstAttribute="leading" secondItem="Mpa-Ci-JcE" secondAttribute="leading" id="Bl8-Xi-yjP"/>
+                        <constraint firstAttribute="bottom" secondItem="UgK-Jd-xDm" secondAttribute="bottom" id="JUX-Dg-PL9"/>
+                        <constraint firstItem="M4G-5o-r8t" firstAttribute="centerX" secondItem="Mpa-Ci-JcE" secondAttribute="centerX" id="JkA-1v-LfW"/>
+                        <constraint firstItem="UgK-Jd-xDm" firstAttribute="centerX" secondItem="Mpa-Ci-JcE" secondAttribute="centerX" id="XiU-d6-0HU"/>
+                        <constraint firstItem="M4G-5o-r8t" firstAttribute="top" secondItem="Mpa-Ci-JcE" secondAttribute="top" id="fCm-VU-l0H"/>
+                        <constraint firstItem="UgK-Jd-xDm" firstAttribute="top" secondItem="Buh-es-xDZ" secondAttribute="bottom" id="hUi-wJ-3lt"/>
+                        <constraint firstItem="Buh-es-xDZ" firstAttribute="centerX" secondItem="Mpa-Ci-JcE" secondAttribute="centerX" id="oUb-Sl-gLF"/>
+                        <constraint firstItem="Buh-es-xDZ" firstAttribute="leading" secondItem="Mpa-Ci-JcE" secondAttribute="leading" id="vfD-iq-mfa"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="2O4-UV-72r" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="0OW-uW-aI3"/>
+                <constraint firstItem="2O4-UV-72r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HjT-Vd-Nwh"/>
+                <constraint firstItem="Mpa-Ci-JcE" firstAttribute="top" secondItem="2O4-UV-72r" secondAttribute="bottom" constant="8" id="Xf0-u5-Udz"/>
+                <constraint firstItem="Mpa-Ci-JcE" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aeO-Ob-dWN"/>
+                <constraint firstItem="Mpa-Ci-JcE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cSf-ua-Der"/>
+                <constraint firstItem="2O4-UV-72r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jHD-4S-kdz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Mpa-Ci-JcE" secondAttribute="bottom" id="vwH-6a-oW3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="131.8840579710145" y="152.67857142857142"/>
+        </view>
+    </objects>
+</document>
